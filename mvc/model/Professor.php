@@ -1,10 +1,6 @@
 <?php
-class Professor {
-
-    function getConnection() {
-        $conexao = new PDO('mysql:host=localhost;dbname=web_maria', 'root', '');
-        return $conexao;
-    }
+include_once 'core/Model.php';
+class Professor extends Model {
 
     function getAll() {
         $conexao = $this->getConnection();

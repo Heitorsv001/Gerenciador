@@ -1,12 +1,7 @@
 <?php
-class Aluno {
-
-    function getConnection() {
-        $conexao = new PDO('mysql:host=localhost;dbname=web_maria', 'root', '');
-        return $conexao;
-    }
-
-    function getAll() {
+include_once 'core/Model.php';
+class Aluno extends Model{
+       function getAll() {
         $conexao = $this->getConnection();
         $sql = 'SELECT * FROM aluno ORDER BY nome';
         $stmt = $conexao->query($sql, PDO::FETCH_ASSOC);

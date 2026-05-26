@@ -1,13 +1,8 @@
 <?php
-class Permanencia {
-
-    function getConnection() {
-        $conexao = new PDO('mysql:host=localhost;dbname=web_maria', 'root', '');
-        return $conexao;
-    }
-
+include_once 'core/Model.php';
+class Permanencia extends Model{
     function getAll() {
-        $conexao = $this->getConnection();
+        $conexao = $this->db;
         $sql = 'SELECT p.*, prof.nome AS professor 
                 FROM permanencia p
                 JOIN professor prof ON p.id_professor = prof.id

@@ -1,6 +1,6 @@
-CREATE DATABASE web_maria;
+CREATE DATABASE Gerenciador;
 
-\c web_maria;
+\c Gerenciador;
 
 CREATE TABLE professor (
     id SERIAL PRIMARY KEY,
