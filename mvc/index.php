@@ -4,15 +4,16 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 ini_set('display_startup_errors', 1);
-
-  include 'controller/AlunoController.php';
+  include 'core/Database.php';
+  include 'core/Model.php';
   include 'model/Aluno.php';
+  include 'model/Professor.php';
+  include 'model/Permanencia.php';
+  include 'controller/AlunoController.php';
   include 'controller/ProfessorController.php';
-  include 'model/Professor.php';  
   include 'controller/PermanenciaController.php';
-  include 'model/Permanencia.php';  
 
-  define("APP", "http://localhost/webMaria/mvc");
+  define("APP", "http://localhost/Gerenciador/mvc");
 
   $url = $_GET['url'] ?? '';
 
