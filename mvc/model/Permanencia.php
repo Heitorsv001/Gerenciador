@@ -1,5 +1,5 @@
 <?php
-include_once 'core/Model.php';
+include_once 'system/Model.php';
 
 class Permanencia extends Model {
     protected $table = 'permanencia';

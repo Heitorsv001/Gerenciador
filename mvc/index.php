@@ -4,8 +4,9 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 ini_set('display_startup_errors', 1);
-  include 'core/Database.php';
-  include 'core/Model.php';
+  include 'system/Database.php';
+  include 'system/Model.php';
+  include 'system/Controller.php';
   include 'model/Aluno.php';
   include 'model/Professor.php';
   include 'model/Permanencia.php';
