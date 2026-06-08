@@ -9,8 +9,8 @@
 ##Script do Banco de dados 
 --
 
-      CREATE DATABASE web_maria;
-      \c web_maria;
+      CREATE DATABASE Gerenciador;
+      \c Gerenciador;
       
       -- Tabela Professor
       CREATE TABLE professor (
