@@ -9,7 +9,7 @@ class Database {
         if (!self::$conexao) {
 
             self::$conexao = new PDO(
-                "pgsql:host=localhost;port=5432;dbname=gerenciador",
+                "pgsql:host=localhost;port=5432;dbname=Gerenciador",
                 "postgres",
                 "postgres"
             );
