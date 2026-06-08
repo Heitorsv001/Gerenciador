@@ -60,3 +60,7 @@
           pg_get_serial_sequence('usuario', 'id'),
           (SELECT MAX(id) FROM usuario)
       );
+
+      ##USusario e senha de admin
+      --admin
+      --admin
