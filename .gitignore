@@ -1,0 +1,4 @@
+# Dependências de pacotes
+/vendor/
+# Arquivo executável do Composer
+composer.phar
