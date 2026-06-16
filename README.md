@@ -8,7 +8,6 @@
 
 ##Script do Banco de dados
 
- -- Tabela Professor
 CREATE TABLE professor (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100),
@@ -16,7 +15,6 @@ CREATE TABLE professor (
     senha VARCHAR(100)
 );
 
--- Tabela Aluno
 CREATE TABLE aluno (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100),
@@ -25,7 +23,7 @@ CREATE TABLE aluno (
     foto VARCHAR(255) DEFAULT NULL
 );
 
--- Tabela Permanência
+
 CREATE TABLE permanencia (
     id SERIAL PRIMARY KEY,
     id_professor INTEGER NOT NULL,
@@ -40,14 +38,12 @@ CREATE TABLE permanencia (
         ON DELETE CASCADE
 );
 
--- Tabela Disciplina
 CREATE TABLE disciplina (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     codigo VARCHAR(20) NOT NULL
 );
 
--- Tabela de relacionamento Aluno <-> Disciplina (N x N)
 CREATE TABLE aluno_disciplina (
     id_aluno INTEGER NOT NULL,
     id_disciplina INTEGER NOT NULL,
@@ -65,14 +61,12 @@ CREATE TABLE aluno_disciplina (
         ON DELETE CASCADE
 );
 
--- Tabela Usuário
 CREATE TABLE usuario (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
     senha VARCHAR(50) NOT NULL
 );
 
--- Usuário administrador (senha: admin)
 INSERT INTO usuario (id, nome, senha)
 VALUES (
     1,
@@ -80,7 +74,6 @@ VALUES (
     '21232f297a57a5a743894a0e4a801fc3'
 );
 
--- Ajusta a sequência do SERIAL
 SELECT setval(
     pg_get_serial_sequence('usuario', 'id'),
     (SELECT MAX(id) FROM usuario)
