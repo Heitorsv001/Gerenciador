@@ -9,31 +9,40 @@
 <?php include "view/partials/menu.php"; ?>
 
 <h1>Listagem de Alunos</h1>
-<a class="btn btn-primary" href="novo">Novo</a>
+<a class="btn btn-primary mb-3" href="<?= APP ?>/aluno/novo">Novo</a>
 
-<table class="table">
-<thead>
+<table class="table table-bordered">
+<thead class="table-dark">
 <tr>
     <th>ID</th>
     <th>Nome</th>
     <th>Email</th>
-    <th>Excluir</th>
+    <th>Inscrições</th>
     <th>Editar</th>
+    <th>Excluir</th>
 </tr>
 </thead>
-
 <tbody>
 <?php foreach ($usuarios as $usuario): ?>
 <tr>
     <td><?= $usuario['id'] ?></td>
-    <td><?= $usuario['nome'] ?></td>
-    <td><?= $usuario['email'] ?></td>
-    <td><a class="btn btn-danger" href="excluir/<?= $usuario['id'] ?>">x</a></td>
-    <td><a class="btn btn-primary" href="editar/<?= $usuario['id'] ?>">+</a></td>
+    <td><?= htmlspecialchars($usuario['nome']) ?></td>
+    <td><?= htmlspecialchars($usuario['email']) ?></td>
+    <td>
+        <a class="btn btn-success btn-sm"
+           href="<?= APP ?>/aluno/inscricoes/<?= $usuario['id'] ?>">
+           Inscrições
+        </a>
+    </td>
+    <td><a class="btn btn-warning btn-sm" href="<?= APP ?>/aluno/editar/<?= $usuario['id'] ?>">Editar</a></td>
+    <td>
+        <a class="btn btn-danger btn-sm"
+           href="<?= APP ?>/aluno/excluir/<?= $usuario['id'] ?>"
+           onclick="return confirm('Excluir aluno?')">Excluir</a>
+    </td>
 </tr>
 <?php endforeach; ?>
 </tbody>
-
 </table>
 </body>
 </html>

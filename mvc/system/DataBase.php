@@ -14,7 +14,7 @@ class Database {
                 "postgres"
             );
             self::$conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            self::$conexao->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); // adicionar
+            self::$conexao->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); 
 
             self::$conexao->setAttribute(
                 PDO::ATTR_ERRMODE,
