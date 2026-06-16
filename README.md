@@ -8,14 +8,15 @@
 
 ##Script do Banco de dados
 
-   --Tabela Professor
+ -- Tabela Professor
 CREATE TABLE professor (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100),
     email VARCHAR(100),
     senha VARCHAR(100)
 );
-      -- Tabela Aluno
+
+-- Tabela Aluno
 CREATE TABLE aluno (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100),
@@ -23,6 +24,7 @@ CREATE TABLE aluno (
     senha VARCHAR(100),
     foto VARCHAR(255) DEFAULT NULL
 );
+
 -- Tabela Permanência
 CREATE TABLE permanencia (
     id SERIAL PRIMARY KEY,
@@ -31,41 +33,54 @@ CREATE TABLE permanencia (
     hora_inicio TIME,
     hora_fim TIME,
     sala VARCHAR(20),
+
     CONSTRAINT fk_professor
         FOREIGN KEY (id_professor)
         REFERENCES professor(id)
         ON DELETE CASCADE
 );
--- Tabela Disciplina (N×M)
+
+-- Tabela Disciplina
 CREATE TABLE disciplina (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     codigo VARCHAR(20) NOT NULL
 );
--- Tabela intermediária Aluno <-> Disciplina (N×M)
+
+-- Tabela de relacionamento Aluno <-> Disciplina (N x N)
 CREATE TABLE aluno_disciplina (
-    id_aluno      INTEGER NOT NULL,
+    id_aluno INTEGER NOT NULL,
     id_disciplina INTEGER NOT NULL,
+
     PRIMARY KEY (id_aluno, id_disciplina),
+
     CONSTRAINT fk_aluno
         FOREIGN KEY (id_aluno)
         REFERENCES aluno(id)
         ON DELETE CASCADE,
+
     CONSTRAINT fk_disciplina
         FOREIGN KEY (id_disciplina)
         REFERENCES disciplina(id)
         ON DELETE CASCADE
 );
+
 -- Tabela Usuário
 CREATE TABLE usuario (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
     senha VARCHAR(50) NOT NULL
 );
--- Usuário admin (senha: admin)
+
+-- Usuário administrador (senha: admin)
 INSERT INTO usuario (id, nome, senha)
-VALUES (1, 'admin', '21232f297a57a5a743894a0e4a801fc3');
--- Ajusta a sequência
+VALUES (
+    1,
+    'admin',
+    '21232f297a57a5a743894a0e4a801fc3'
+);
+
+-- Ajusta a sequência do SERIAL
 SELECT setval(
     pg_get_serial_sequence('usuario', 'id'),
     (SELECT MAX(id) FROM usuario)
