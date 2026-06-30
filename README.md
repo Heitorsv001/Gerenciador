@@ -79,6 +79,13 @@ SELECT setval(
     (SELECT MAX(id) FROM usuario)
 );
 
+create table aluno_permanencia(
+    id serial primary key, 
+    id_aluno integer not null references aluno(id) On delete cascade,
+    id_permanencia integer not null references permanencia(id) on delete cascade,
+    UNIQUE (id_aluno, id_permanencia)
+);
+
 
       ##USuario e senha do admin
       --admin
